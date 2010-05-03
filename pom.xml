@@ -147,6 +147,14 @@
           <argLine>-Djava.endorsed.dirs=${settings.localRepository}/javax/xml/bind/jaxb-api/2.1 -Dneo4j.config=src/test/resources/neo4j.properties -Dneo4j.env=test</argLine>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
     </plugins>
 
     <pluginManagement>
