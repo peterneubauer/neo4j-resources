@@ -2,6 +2,7 @@ package com.eptcomputing.neo4j.version
 
 import java.io.Serializable
 import org.neo4j.graphdb._
+import org.neo4j.graphdb.event._
 
 // THIS IS WORK IN PROGRESS
 //
@@ -33,6 +34,15 @@ private class VersionedNeo(delegate: GraphDatabaseService) extends GraphDatabase
   def getRelationshipTypes: java.lang.Iterable[RelationshipType] = delegate.getRelationshipTypes
 
   def shutdown = delegate.shutdown
+  
+  def unregisterKernelEventHandler(eventHandler: KernelEventHandler) = delegate.unregisterKernelEventHandler(eventHandler)
+  
+  def registerKernelEventHandler(eventHandler: KernelEventHandler): KernelEventHandler = delegate.registerKernelEventHandler(eventHandler)
+
+  def unregisterTransactionEventHandler(txHandler: TransactionEventHandler[Any]) = delegate.unregisterTransactionEventHandler(txHandler)
+  
+  def registerTransactionEventHandler(txHandler: TransactionEventHandler[Any]):  TransactionEventHandler[Any] = delegate.registerTransactionEventHandler(txHandler)
+  
 }
 
 
@@ -63,6 +73,8 @@ private class NodeImpl(delegate: Node) extends NodeImplBase {
   def setProperty(key: String, value: java.lang.Object) = delegate.setProperty(key, value)
 
   def removeProperty(key: String): java.lang.Object = delegate.removeProperty(key)
+  
+  def getGraphDatabase: GraphDatabaseService = delegate.getGraphDatabase()
 }
 
 
@@ -86,4 +98,6 @@ private class RelationshipImpl(delegate: Relationship) extends RelationshipImplB
   def setProperty(key: String, value: java.lang.Object) = delegate.setProperty(key, value)
 
   def removeProperty(key: String): java.lang.Object = delegate.removeProperty(key)
+
+  def getGraphDatabase: GraphDatabaseService = delegate.getGraphDatabase()
 }

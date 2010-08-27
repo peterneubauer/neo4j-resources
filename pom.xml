@@ -71,19 +71,13 @@
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-kernel</artifactId>
-      <version>1.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.neo4j</groupId>
-      <artifactId>neo4j-shell</artifactId>
-      <version>1.0</version>
+      <version>1.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j-utils</artifactId>
-      <version>1.0</version>
+      <version>1.1</version>
     </dependency>
 
     <!-- General utilities -->
